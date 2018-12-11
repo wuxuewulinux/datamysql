@@ -30,7 +30,7 @@ void * readxiancheng(void *canshu)
 			if(ret == -2)
 			{      
 				std::cout<<"接收到错误的消息包!"<<std::endl;
-				log.printflog("接收到错误的消息包!");
+				MYLOG.printflog("接收到错误的消息包!");
 
 				//如果数据发生错误，就需要对该IO进行处理
 
@@ -59,7 +59,7 @@ void * readxiancheng(void *canshu)
 		}
 
 	}
-
+	return NULL;
 }
 
 
@@ -75,7 +75,7 @@ void ChuLiAgemess(struct message * message,int * io)
 	if (!mess_ti.ParseFromArray(message->buff, message->len))
 	{
 		std::cout << "反序列失败！" << std::endl;
-		log.printflog("反序列失败！");     
+		MYLOG.printflog("反序列失败！");     
 		return;
 	}
 	//获取模块入口
@@ -83,7 +83,7 @@ void ChuLiAgemess(struct message * message,int * io)
 	{
 		IHandler* handler = HANDLERLIST->GetHandler(mess_ti.head().msgid());
 		//执行模块功能
-		handler->OnClientMsg(mess_ti,*io);
+		handler->OnServerMsg(mess_ti,*io);
 	}
 	
 }
@@ -114,7 +114,7 @@ void * chulimessage(void *canshu)
 
 	}
 
-
+	return NULL;
 }
 
 
@@ -144,7 +144,7 @@ void * writexiancheng(void *canshu)
 		}	
 
 	}
-
+	return NULL;
 }
 
 
@@ -201,7 +201,7 @@ void * timexiancheng(void * canshu) //定时器执行线程
 				node = timelei.bianli();
 		}
 	}
-
+	return NULL;
 } 
 
 
@@ -217,7 +217,7 @@ int ret=pthread_create(&readpthread,NULL,readxiancheng,NULL);   //创建一个线程
 if(ret != 0)
 {
 std::cout<<"create read pthread fail!"<<std::endl;
-log.printflog("create read pthread fail!");
+MYLOG.printflog("create read pthread fail!");
 return -1;
 }
 
@@ -228,7 +228,7 @@ ret=pthread_create(&chulipthread,NULL,chulimessage,NULL);   //创建一个线程
 if(ret != 0)
 {
 std::cout<<"create work  pthread fail!"<<std::endl;
-log.printflog("create work  pthread fail!");
+MYLOG.printflog("create work  pthread fail!");
 return -1;
 }
 
@@ -239,7 +239,7 @@ ret=pthread_create(&writepthread,NULL,writexiancheng,NULL);   //创建一个线程
 if(ret != 0)
 {
 std::cout<<"create write  pthread fail!"<<std::endl;
-log.printflog("create write  pthread fail!");
+MYLOG.printflog("create write  pthread fail!");
 return -1;
 }
 
@@ -251,7 +251,7 @@ ret=pthread_create(&timepthread,NULL,timexiancheng,NULL);   //创建一个线程
 if(ret != 0)
 {
 std::cout<<"create time  pthread fail!"<<std::endl;
-log.printflog("create time  pthread fail!");
+MYLOG.printflog("create time  pthread fail!");
 return -1;
 }
 

@@ -30,7 +30,15 @@ public:
 
 	//调用mysql数据库返回该用户游戏名字 
 
-	string GetName(const string & zhanghu);
+	string GetName(int Uid);
+
+	//获取role结构
+
+	string GetDBRole(int Uid);
+
+	//修改某个用户的role结构
+
+	void ChangeDBRole(string & rDBRole,int Uid);
 
 	//判断客户端注册情况：函数返回1表示账户存在，返回2表示名字存在，返回3表示注册成功.然后保存到mysql数据库
 
@@ -66,7 +74,7 @@ public:
 
 	//获取用户uid
 
-	int GetUid(const string & zhanghu);
+	uint64_t GetUid(const string & zhanghu);
 
 
 	//获取字段的属性测试

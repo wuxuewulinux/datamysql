@@ -10,8 +10,8 @@ class IHandler
 public:
 	virtual ~IHandler();
 
-	virtual int OnClientMsg(const SSMsg& rSSMsg, int iFd);
-	//virtual int OnServerMsg(const SSMsg& rSSMsg);
+	//virtual int OnClientMsg(const SSMsg& rSSMsg, int iFd);
+	virtual int OnServerMsg(const SSMsg& rSSMsg, int iFd);
 
 };
 

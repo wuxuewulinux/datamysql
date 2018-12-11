@@ -30,6 +30,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* SSRegisterRsp_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   SSRegisterRsp_reflection_ = NULL;
+const ::google::protobuf::Descriptor* SSQuitReq_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  SSQuitReq_reflection_ = NULL;
 const ::google::protobuf::Descriptor* SSRegisterLoginReqParam_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   SSRegisterLoginReqParam_reflection_ = NULL;
@@ -80,8 +83,9 @@ void protobuf_AssignDesc_SSmsg_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SSLoginReq));
   SSLoginRsp_descriptor_ = file->message_type(1);
-  static const int SSLoginRsp_offsets_[1] = {
+  static const int SSLoginRsp_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSLoginRsp, type_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSLoginRsp, role_),
   };
   SSLoginRsp_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -95,11 +99,10 @@ void protobuf_AssignDesc_SSmsg_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SSLoginRsp));
   SSRegisterReq_descriptor_ = file->message_type(2);
-  static const int SSRegisterReq_offsets_[4] = {
+  static const int SSRegisterReq_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSRegisterReq, account_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSRegisterReq, password_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSRegisterReq, name_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSRegisterReq, sex_),
   };
   SSRegisterReq_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -127,10 +130,26 @@ void protobuf_AssignDesc_SSmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SSRegisterRsp));
-  SSRegisterLoginReqParam_descriptor_ = file->message_type(4);
-  static const int SSRegisterLoginReqParam_offsets_[2] = {
+  SSQuitReq_descriptor_ = file->message_type(4);
+  static const int SSQuitReq_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSQuitReq, role_),
+  };
+  SSQuitReq_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      SSQuitReq_descriptor_,
+      SSQuitReq::default_instance_,
+      SSQuitReq_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSQuitReq, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSQuitReq, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(SSQuitReq));
+  SSRegisterLoginReqParam_descriptor_ = file->message_type(5);
+  static const int SSRegisterLoginReqParam_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSRegisterLoginReqParam, loginreq_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSRegisterLoginReqParam, registerreq_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSRegisterLoginReqParam, quitreq_),
   };
   SSRegisterLoginReqParam_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -143,7 +162,7 @@ void protobuf_AssignDesc_SSmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SSRegisterLoginReqParam));
-  SSRegisterLoginRspParam_descriptor_ = file->message_type(5);
+  SSRegisterLoginRspParam_descriptor_ = file->message_type(6);
   static const int SSRegisterLoginRspParam_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSRegisterLoginRspParam, loginrsp_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSRegisterLoginRspParam, registerrsp_),
@@ -159,7 +178,7 @@ void protobuf_AssignDesc_SSmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SSRegisterLoginRspParam));
-  SSRegisterLoginReq_descriptor_ = file->message_type(6);
+  SSRegisterLoginReq_descriptor_ = file->message_type(7);
   static const int SSRegisterLoginReq_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSRegisterLoginReq, cmd_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSRegisterLoginReq, reqparam_),
@@ -175,7 +194,7 @@ void protobuf_AssignDesc_SSmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SSRegisterLoginReq));
-  SSRegisterLoginRsp_descriptor_ = file->message_type(7);
+  SSRegisterLoginRsp_descriptor_ = file->message_type(8);
   static const int SSRegisterLoginRsp_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSRegisterLoginRsp, result_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSRegisterLoginRsp, cmd_),
@@ -192,7 +211,7 @@ void protobuf_AssignDesc_SSmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SSRegisterLoginRsp));
-  SSMsgBody_descriptor_ = file->message_type(8);
+  SSMsgBody_descriptor_ = file->message_type(9);
   static const int SSMsgBody_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSMsgBody, registerloginreq_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSMsgBody, registerloginrsp_),
@@ -208,7 +227,7 @@ void protobuf_AssignDesc_SSmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SSMsgBody));
-  SSMsgHead_descriptor_ = file->message_type(9);
+  SSMsgHead_descriptor_ = file->message_type(10);
   static const int SSMsgHead_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSMsgHead, uid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSMsgHead, msgid_),
@@ -224,7 +243,7 @@ void protobuf_AssignDesc_SSmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SSMsgHead));
-  SSMsg_descriptor_ = file->message_type(10);
+  SSMsg_descriptor_ = file->message_type(11);
   static const int SSMsg_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSMsg, head_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SSMsg, body_),
@@ -263,6 +282,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     SSRegisterRsp_descriptor_, &SSRegisterRsp::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    SSQuitReq_descriptor_, &SSQuitReq::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     SSRegisterLoginReqParam_descriptor_, &SSRegisterLoginReqParam::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     SSRegisterLoginRspParam_descriptor_, &SSRegisterLoginRspParam::default_instance());
@@ -289,6 +310,8 @@ void protobuf_ShutdownFile_SSmsg_2eproto() {
   delete SSRegisterReq_reflection_;
   delete SSRegisterRsp::default_instance_;
   delete SSRegisterRsp_reflection_;
+  delete SSQuitReq::default_instance_;
+  delete SSQuitReq_reflection_;
   delete SSRegisterLoginReqParam::default_instance_;
   delete SSRegisterLoginReqParam_reflection_;
   delete SSRegisterLoginRspParam::default_instance_;
@@ -314,36 +337,41 @@ void protobuf_AddDesc_SSmsg_2eproto() {
   ::protobuf_AddDesc_DBmsg_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\013SSmsg.proto\032\013DBmsg.proto\"/\n\nSSLoginReq"
-    "\022\017\n\007account\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"\032\n\nS"
-    "SLoginRsp\022\014\n\004type\030\001 \001(\r\"M\n\rSSRegisterReq"
-    "\022\017\n\007account\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\014\n\004n"
-    "ame\030\003 \001(\t\022\013\n\003sex\030\004 \001(\r\"\035\n\rSSRegisterRsp\022"
-    "\014\n\004type\030\001 \001(\r\"]\n\027SSRegisterLoginReqParam"
-    "\022\035\n\010LoginReq\030\001 \001(\0132\013.SSLoginReq\022#\n\013Regis"
-    "terReq\030\002 \001(\0132\016.SSRegisterReq\"]\n\027SSRegist"
-    "erLoginRspParam\022\035\n\010LoginRsp\030\001 \001(\0132\013.SSLo"
-    "ginRsp\022#\n\013RegisterRsp\030\002 \001(\0132\016.SSRegister"
-    "Rsp\"b\n\022SSRegisterLoginReq\022 \n\003cmd\030\001 \002(\0162\023"
-    ".SSRegisterLoginCmd\022*\n\010reqParam\030\002 \001(\0132\030."
-    "SSRegisterLoginReqParam\"r\n\022SSRegisterLog"
-    "inRsp\022\016\n\006result\030\001 \001(\005\022 \n\003cmd\030\002 \002(\0162\023.SSR"
-    "egisterLoginCmd\022*\n\010rspParam\030\003 \001(\0132\030.SSRe"
-    "gisterLoginRspParam\"i\n\tSSMsgBody\022-\n\020Regi"
-    "sterLoginReq\030\001 \001(\0132\023.SSRegisterLoginReq\022"
-    "-\n\020RegisterLoginRsp\030\002 \001(\0132\023.SSRegisterLo"
-    "ginRsp\"1\n\tSSMsgHead\022\013\n\003uid\030\001 \002(\004\022\027\n\005msgI"
-    "D\030\002 \002(\0162\010.SSMsgID\";\n\005SSMsg\022\030\n\004head\030\001 \002(\013"
-    "2\n.SSMsgHead\022\030\n\004body\030\002 \002(\0132\n.SSMsgBody*S"
-    "\n\022SSRegisterLoginCmd\022\037\n\033SSRegisterLoginC"
-    "md_Register\020\001\022\034\n\030SSRegisterLoginCmd_Logi"
-    "n\020\002*I\n\007SSMsgID\022\020\n\014SS_MSGID_MIN\020\000\022\032\n\026SS_M"
-    "SGID_RegisterLogin\020\001\022\020\n\014SS_MSGID_MAX\020\002", 998);
+    "\022\017\n\007account\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"5\n\nS"
+    "SLoginRsp\022\014\n\004type\030\001 \001(\r\022\031\n\004Role\030\002 \001(\0132\013."
+    "DBRoleInfo\"@\n\rSSRegisterReq\022\017\n\007account\030\001"
+    " \001(\t\022\020\n\010password\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\"\035\n\r"
+    "SSRegisterRsp\022\014\n\004type\030\001 \001(\r\"&\n\tSSQuitReq"
+    "\022\031\n\004Role\030\001 \001(\0132\013.DBRoleInfo\"z\n\027SSRegiste"
+    "rLoginReqParam\022\035\n\010LoginReq\030\001 \001(\0132\013.SSLog"
+    "inReq\022#\n\013RegisterReq\030\002 \001(\0132\016.SSRegisterR"
+    "eq\022\033\n\007QuitReq\030\003 \001(\0132\n.SSQuitReq\"]\n\027SSReg"
+    "isterLoginRspParam\022\035\n\010LoginRsp\030\001 \001(\0132\013.S"
+    "SLoginRsp\022#\n\013RegisterRsp\030\002 \001(\0132\016.SSRegis"
+    "terRsp\"b\n\022SSRegisterLoginReq\022 \n\003cmd\030\001 \002("
+    "\0162\023.SSRegisterLoginCmd\022*\n\010reqParam\030\002 \001(\013"
+    "2\030.SSRegisterLoginReqParam\"r\n\022SSRegister"
+    "LoginRsp\022\016\n\006result\030\001 \001(\005\022 \n\003cmd\030\002 \002(\0162\023."
+    "SSRegisterLoginCmd\022*\n\010rspParam\030\003 \001(\0132\030.S"
+    "SRegisterLoginRspParam\"i\n\tSSMsgBody\022-\n\020R"
+    "egisterLoginReq\030\001 \001(\0132\023.SSRegisterLoginR"
+    "eq\022-\n\020RegisterLoginRsp\030\002 \001(\0132\023.SSRegiste"
+    "rLoginRsp\"1\n\tSSMsgHead\022\013\n\003uid\030\001 \002(\004\022\027\n\005m"
+    "sgID\030\002 \002(\0162\010.SSMsgID\";\n\005SSMsg\022\030\n\004head\030\001 "
+    "\002(\0132\n.SSMsgHead\022\030\n\004body\030\002 \002(\0132\n.SSMsgBod"
+    "y*\227\001\n\022SSRegisterLoginCmd\022\037\n\033SSRegisterLo"
+    "ginCmd_Register\020\001\022\034\n\030SSRegisterLoginCmd_"
+    "Login\020\002\022\033\n\027SSRegisterLoginCmd_Quit\020\003\022%\n!"
+    "SSRegisterLoginCmd_UpdateDatabase\020\004*H\n\007S"
+    "SMsgID\022\021\n\014SS_MSGID_MIN\020\350\007\022\027\n\022SS_MSGID_Ga"
+    "meMysql\020\351\007\022\021\n\014SS_MSGID_MAX\020\352\007", 1149);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "SSmsg.proto", &protobuf_RegisterTypes);
   SSLoginReq::default_instance_ = new SSLoginReq();
   SSLoginRsp::default_instance_ = new SSLoginRsp();
   SSRegisterReq::default_instance_ = new SSRegisterReq();
   SSRegisterRsp::default_instance_ = new SSRegisterRsp();
+  SSQuitReq::default_instance_ = new SSQuitReq();
   SSRegisterLoginReqParam::default_instance_ = new SSRegisterLoginReqParam();
   SSRegisterLoginRspParam::default_instance_ = new SSRegisterLoginRspParam();
   SSRegisterLoginReq::default_instance_ = new SSRegisterLoginReq();
@@ -355,6 +383,7 @@ void protobuf_AddDesc_SSmsg_2eproto() {
   SSLoginRsp::default_instance_->InitAsDefaultInstance();
   SSRegisterReq::default_instance_->InitAsDefaultInstance();
   SSRegisterRsp::default_instance_->InitAsDefaultInstance();
+  SSQuitReq::default_instance_->InitAsDefaultInstance();
   SSRegisterLoginReqParam::default_instance_->InitAsDefaultInstance();
   SSRegisterLoginRspParam::default_instance_->InitAsDefaultInstance();
   SSRegisterLoginReq::default_instance_->InitAsDefaultInstance();
@@ -379,6 +408,8 @@ bool SSRegisterLoginCmd_IsValid(int value) {
   switch(value) {
     case 1:
     case 2:
+    case 3:
+    case 4:
       return true;
     default:
       return false;
@@ -391,9 +422,9 @@ const ::google::protobuf::EnumDescriptor* SSMsgID_descriptor() {
 }
 bool SSMsgID_IsValid(int value) {
   switch(value) {
-    case 0:
-    case 1:
-    case 2:
+    case 1000:
+    case 1001:
+    case 1002:
       return true;
     default:
       return false;
@@ -687,6 +718,7 @@ void SSLoginReq::Swap(SSLoginReq* other) {
 
 #ifndef _MSC_VER
 const int SSLoginRsp::kTypeFieldNumber;
+const int SSLoginRsp::kRoleFieldNumber;
 #endif  // !_MSC_VER
 
 SSLoginRsp::SSLoginRsp()
@@ -695,6 +727,7 @@ SSLoginRsp::SSLoginRsp()
 }
 
 void SSLoginRsp::InitAsDefaultInstance() {
+  role_ = const_cast< ::DBRoleInfo*>(&::DBRoleInfo::default_instance());
 }
 
 SSLoginRsp::SSLoginRsp(const SSLoginRsp& from)
@@ -706,6 +739,7 @@ SSLoginRsp::SSLoginRsp(const SSLoginRsp& from)
 void SSLoginRsp::SharedCtor() {
   _cached_size_ = 0;
   type_ = 0u;
+  role_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -715,6 +749,7 @@ SSLoginRsp::~SSLoginRsp() {
 
 void SSLoginRsp::SharedDtor() {
   if (this != default_instance_) {
+    delete role_;
   }
 }
 
@@ -742,6 +777,9 @@ SSLoginRsp* SSLoginRsp::New() const {
 void SSLoginRsp::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     type_ = 0u;
+    if (has_role()) {
+      if (role_ != NULL) role_->::DBRoleInfo::Clear();
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -761,6 +799,20 @@ bool SSLoginRsp::MergePartialFromCodedStream(
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &type_)));
           set_has_type();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_Role;
+        break;
+      }
+
+      // optional .DBRoleInfo Role = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_Role:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_role()));
         } else {
           goto handle_uninterpreted;
         }
@@ -791,6 +843,12 @@ void SSLoginRsp::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->type(), output);
   }
 
+  // optional .DBRoleInfo Role = 2;
+  if (has_role()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->role(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -802,6 +860,13 @@ void SSLoginRsp::SerializeWithCachedSizes(
   // optional uint32 type = 1;
   if (has_type()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->type(), target);
+  }
+
+  // optional .DBRoleInfo Role = 2;
+  if (has_role()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->role(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -820,6 +885,13 @@ int SSLoginRsp::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->type());
+    }
+
+    // optional .DBRoleInfo Role = 2;
+    if (has_role()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->role());
     }
 
   }
@@ -852,6 +924,9 @@ void SSLoginRsp::MergeFrom(const SSLoginRsp& from) {
     if (from.has_type()) {
       set_type(from.type());
     }
+    if (from.has_role()) {
+      mutable_role()->::DBRoleInfo::MergeFrom(from.role());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -876,6 +951,7 @@ bool SSLoginRsp::IsInitialized() const {
 void SSLoginRsp::Swap(SSLoginRsp* other) {
   if (other != this) {
     std::swap(type_, other->type_);
+    std::swap(role_, other->role_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -897,7 +973,6 @@ void SSLoginRsp::Swap(SSLoginRsp* other) {
 const int SSRegisterReq::kAccountFieldNumber;
 const int SSRegisterReq::kPasswordFieldNumber;
 const int SSRegisterReq::kNameFieldNumber;
-const int SSRegisterReq::kSexFieldNumber;
 #endif  // !_MSC_VER
 
 SSRegisterReq::SSRegisterReq()
@@ -919,7 +994,6 @@ void SSRegisterReq::SharedCtor() {
   account_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   password_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  sex_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -979,7 +1053,6 @@ void SSRegisterReq::Clear() {
         name_->clear();
       }
     }
-    sex_ = 0u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -1037,22 +1110,6 @@ bool SSRegisterReq::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(32)) goto parse_sex;
-        break;
-      }
-
-      // optional uint32 sex = 4;
-      case 4: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_sex:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &sex_)));
-          set_has_sex();
-        } else {
-          goto handle_uninterpreted;
-        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -1102,11 +1159,6 @@ void SSRegisterReq::SerializeWithCachedSizes(
       3, this->name(), output);
   }
 
-  // optional uint32 sex = 4;
-  if (has_sex()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->sex(), output);
-  }
-
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1145,11 +1197,6 @@ void SSRegisterReq::SerializeWithCachedSizes(
         3, this->name(), target);
   }
 
-  // optional uint32 sex = 4;
-  if (has_sex()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->sex(), target);
-  }
-
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -1180,13 +1227,6 @@ int SSRegisterReq::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->name());
-    }
-
-    // optional uint32 sex = 4;
-    if (has_sex()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->sex());
     }
 
   }
@@ -1225,9 +1265,6 @@ void SSRegisterReq::MergeFrom(const SSRegisterReq& from) {
     if (from.has_name()) {
       set_name(from.name());
     }
-    if (from.has_sex()) {
-      set_sex(from.sex());
-    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -1254,7 +1291,6 @@ void SSRegisterReq::Swap(SSRegisterReq* other) {
     std::swap(account_, other->account_);
     std::swap(password_, other->password_);
     std::swap(name_, other->name_);
-    std::swap(sex_, other->sex_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -1481,8 +1517,222 @@ void SSRegisterRsp::Swap(SSRegisterRsp* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int SSQuitReq::kRoleFieldNumber;
+#endif  // !_MSC_VER
+
+SSQuitReq::SSQuitReq()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void SSQuitReq::InitAsDefaultInstance() {
+  role_ = const_cast< ::DBRoleInfo*>(&::DBRoleInfo::default_instance());
+}
+
+SSQuitReq::SSQuitReq(const SSQuitReq& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void SSQuitReq::SharedCtor() {
+  _cached_size_ = 0;
+  role_ = NULL;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+SSQuitReq::~SSQuitReq() {
+  SharedDtor();
+}
+
+void SSQuitReq::SharedDtor() {
+  if (this != default_instance_) {
+    delete role_;
+  }
+}
+
+void SSQuitReq::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* SSQuitReq::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return SSQuitReq_descriptor_;
+}
+
+const SSQuitReq& SSQuitReq::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_SSmsg_2eproto();
+  return *default_instance_;
+}
+
+SSQuitReq* SSQuitReq::default_instance_ = NULL;
+
+SSQuitReq* SSQuitReq::New() const {
+  return new SSQuitReq;
+}
+
+void SSQuitReq::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_role()) {
+      if (role_ != NULL) role_->::DBRoleInfo::Clear();
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool SSQuitReq::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .DBRoleInfo Role = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_role()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void SSQuitReq::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional .DBRoleInfo Role = 1;
+  if (has_role()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->role(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* SSQuitReq::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional .DBRoleInfo Role = 1;
+  if (has_role()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->role(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int SSQuitReq::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional .DBRoleInfo Role = 1;
+    if (has_role()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->role());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void SSQuitReq::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const SSQuitReq* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const SSQuitReq*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void SSQuitReq::MergeFrom(const SSQuitReq& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_role()) {
+      mutable_role()->::DBRoleInfo::MergeFrom(from.role());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void SSQuitReq::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void SSQuitReq::CopyFrom(const SSQuitReq& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SSQuitReq::IsInitialized() const {
+
+  return true;
+}
+
+void SSQuitReq::Swap(SSQuitReq* other) {
+  if (other != this) {
+    std::swap(role_, other->role_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata SSQuitReq::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = SSQuitReq_descriptor_;
+  metadata.reflection = SSQuitReq_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
 const int SSRegisterLoginReqParam::kLoginReqFieldNumber;
 const int SSRegisterLoginReqParam::kRegisterReqFieldNumber;
+const int SSRegisterLoginReqParam::kQuitReqFieldNumber;
 #endif  // !_MSC_VER
 
 SSRegisterLoginReqParam::SSRegisterLoginReqParam()
@@ -1493,6 +1743,7 @@ SSRegisterLoginReqParam::SSRegisterLoginReqParam()
 void SSRegisterLoginReqParam::InitAsDefaultInstance() {
   loginreq_ = const_cast< ::SSLoginReq*>(&::SSLoginReq::default_instance());
   registerreq_ = const_cast< ::SSRegisterReq*>(&::SSRegisterReq::default_instance());
+  quitreq_ = const_cast< ::SSQuitReq*>(&::SSQuitReq::default_instance());
 }
 
 SSRegisterLoginReqParam::SSRegisterLoginReqParam(const SSRegisterLoginReqParam& from)
@@ -1505,6 +1756,7 @@ void SSRegisterLoginReqParam::SharedCtor() {
   _cached_size_ = 0;
   loginreq_ = NULL;
   registerreq_ = NULL;
+  quitreq_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1516,6 +1768,7 @@ void SSRegisterLoginReqParam::SharedDtor() {
   if (this != default_instance_) {
     delete loginreq_;
     delete registerreq_;
+    delete quitreq_;
   }
 }
 
@@ -1548,6 +1801,9 @@ void SSRegisterLoginReqParam::Clear() {
     if (has_registerreq()) {
       if (registerreq_ != NULL) registerreq_->::SSRegisterReq::Clear();
     }
+    if (has_quitreq()) {
+      if (quitreq_ != NULL) quitreq_->::SSQuitReq::Clear();
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -1579,6 +1835,20 @@ bool SSRegisterLoginReqParam::MergePartialFromCodedStream(
          parse_RegisterReq:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_registerreq()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_QuitReq;
+        break;
+      }
+
+      // optional .SSQuitReq QuitReq = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_QuitReq:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_quitreq()));
         } else {
           goto handle_uninterpreted;
         }
@@ -1616,6 +1886,12 @@ void SSRegisterLoginReqParam::SerializeWithCachedSizes(
       2, this->registerreq(), output);
   }
 
+  // optional .SSQuitReq QuitReq = 3;
+  if (has_quitreq()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->quitreq(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1636,6 +1912,13 @@ void SSRegisterLoginReqParam::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         2, this->registerreq(), target);
+  }
+
+  // optional .SSQuitReq QuitReq = 3;
+  if (has_quitreq()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        3, this->quitreq(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1661,6 +1944,13 @@ int SSRegisterLoginReqParam::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->registerreq());
+    }
+
+    // optional .SSQuitReq QuitReq = 3;
+    if (has_quitreq()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->quitreq());
     }
 
   }
@@ -1696,6 +1986,9 @@ void SSRegisterLoginReqParam::MergeFrom(const SSRegisterLoginReqParam& from) {
     if (from.has_registerreq()) {
       mutable_registerreq()->::SSRegisterReq::MergeFrom(from.registerreq());
     }
+    if (from.has_quitreq()) {
+      mutable_quitreq()->::SSQuitReq::MergeFrom(from.quitreq());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -1721,6 +2014,7 @@ void SSRegisterLoginReqParam::Swap(SSRegisterLoginReqParam* other) {
   if (other != this) {
     std::swap(loginreq_, other->loginreq_);
     std::swap(registerreq_, other->registerreq_);
+    std::swap(quitreq_, other->quitreq_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -2842,7 +3136,7 @@ SSMsgHead::SSMsgHead(const SSMsgHead& from)
 void SSMsgHead::SharedCtor() {
   _cached_size_ = 0;
   uid_ = GOOGLE_ULONGLONG(0);
-  msgid_ = 0;
+  msgid_ = 1000;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -2879,7 +3173,7 @@ SSMsgHead* SSMsgHead::New() const {
 void SSMsgHead::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     uid_ = GOOGLE_ULONGLONG(0);
-    msgid_ = 0;
+    msgid_ = 1000;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();

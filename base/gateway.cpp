@@ -18,7 +18,7 @@ if(!LogInit("/home/wuxuewu/datamysql/"))
 return;
 }
 //初始化记录错误信息的日志
-if(!log.Init("/home/wuxuewu/datamysql/log/error.txt"))
+if(!MYLOG.Init("/home/wuxuewu/datamysql/log/error.txt"))
 {
 std::cout<<"error log create fail !"<<std::endl;
 return;

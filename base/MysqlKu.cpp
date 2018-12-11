@@ -1,7 +1,6 @@
 
 #include "MysqlKu.hpp"
 
-
 MysqlKu::MysqlKu()
 {
 
@@ -24,7 +23,7 @@ MysqlKu * MysqlKu::Instance()
 int MysqlKu::InitMysql(string user,string mima,string databases,vector<string> & tables)
 {
 	//把从配置中读取到的表名称压入容器中
-	for(int i = 0;i<tables.size();i++)
+	for(int i = 0;i<(int)tables.size();i++)
 	{
 		table.push_back(tables[i]); 
 	}
@@ -94,11 +93,11 @@ int MysqlKu::Login(const string & zhanghu,const string & mima)
 
 
 
-string MysqlKu::GetName(const string & zhanghu)
+string MysqlKu::GetName(int Uid)
 {
 	int t;
-	string str="select name from "+table[0]+" where zhanghu='";
-	str=str+zhanghu+"';";
+	string str="select name from "+table[0]+" where Uid='";
+	str=str+std::to_string(Uid)+"';";
 	t=mysql_query(&mysql,str.c_str());
 	if(t)
 	{
@@ -108,7 +107,7 @@ string MysqlKu::GetName(const string & zhanghu)
 	res = mysql_use_result(&mysql);
 	while((row = mysql_fetch_row(res)))
 	{
-		for(t=0;t<mysql_num_fields(res);t++)
+		for(t=0;t < (int)mysql_num_fields(res);t++)
 		{
 			str=row[t];
 			mysql_free_result(res);
@@ -117,7 +116,52 @@ string MysqlKu::GetName(const string & zhanghu)
 		printf("\n");
 
 	}
+	return "";
+}
 
+
+
+string MysqlKu::GetDBRole(int Uid)
+{
+	int t;
+	string str="select role from "+table[0]+" where Uid=";
+	str=str+to_string(Uid)+";";
+	t=mysql_query(&mysql,str.c_str());
+	if(t)
+	{
+		printf("Error making query:%s\n",mysql_error(&mysql));
+	}
+
+	res = mysql_use_result(&mysql);
+	while((row = mysql_fetch_row(res)))
+	{
+		for(t=0;t < (int)mysql_num_fields(res);t++)
+		{
+			str=row[t];
+			mysql_free_result(res);
+			return str;
+		}
+		printf("\n");
+
+	}
+	return "";
+}
+
+
+
+void MysqlKu::ChangeDBRole(string & rDBRole,int Uid)
+{
+	int t;
+	string str="update "+table[0]+" set role='"+rDBRole;
+	str=str+"' where Uid="+to_string(Uid)+";";
+	t=mysql_query(&mysql,str.c_str());
+	if(t)
+	{
+		printf("Error making query:%s\n",mysql_error(&mysql));
+	}
+	mysql_free_result(res);
+
+	return;
 }
 
 
@@ -134,7 +178,7 @@ int MysqlKu::Register(const string & zhanghu,const string & mingzi)
 	}
 
 	res = mysql_use_result(&mysql);
-	if(row = mysql_fetch_row(res))
+	if((row = mysql_fetch_row(res)))
 	{
 		mysql_free_result(res);
 		return 1;
@@ -149,7 +193,7 @@ int MysqlKu::Register(const string & zhanghu,const string & mingzi)
 	}
 
 	res = mysql_use_result(&mysql);
-	if(row = mysql_fetch_row(res))
+	if((row = mysql_fetch_row(res)))
 	{
 		mysql_free_result(res);
 		return 2;
@@ -262,9 +306,9 @@ void MysqlKu::PopUid(int userid)
 
 
 
-int MysqlKu::GetUid(const string & zhanghu)
+uint64_t MysqlKu::GetUid(const string & zhanghu)
 {
-	int t;
+	uint64_t t;
 	string str="select Uid from "+table[0]+" where zhanghu='";
 	str=str+zhanghu+"';";
 	t=mysql_query(&mysql,str.c_str());
@@ -278,9 +322,9 @@ int MysqlKu::GetUid(const string & zhanghu)
 	{
 		while((row = mysql_fetch_row(res)))
 		{
-			for(t=0;t<mysql_num_fields(res);t++)
+			for(t=0;t < (uint64_t)mysql_num_fields(res);t++)
 			{
-				t=atoi(row[t]);
+				t=(uint64_t)atoi(row[t]);
 				mysql_free_result(res);
 				return t;
 			}

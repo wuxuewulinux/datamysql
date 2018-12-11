@@ -108,20 +108,60 @@ class DBRoleInfo : public ::google::protobuf::Message {
   inline ::std::string* release_name();
   inline void set_allocated_name(::std::string* name);
 
+  // optional uint32 Level = 3;
+  inline bool has_level() const;
+  inline void clear_level();
+  static const int kLevelFieldNumber = 3;
+  inline ::google::protobuf::uint32 level() const;
+  inline void set_level(::google::protobuf::uint32 value);
+
+  // optional uint32 Rank = 4;
+  inline bool has_rank() const;
+  inline void clear_rank();
+  static const int kRankFieldNumber = 4;
+  inline ::google::protobuf::uint32 rank() const;
+  inline void set_rank(::google::protobuf::uint32 value);
+
+  // optional uint32 LevelExper = 5;
+  inline bool has_levelexper() const;
+  inline void clear_levelexper();
+  static const int kLevelExperFieldNumber = 5;
+  inline ::google::protobuf::uint32 levelexper() const;
+  inline void set_levelexper(::google::protobuf::uint32 value);
+
+  // optional uint32 RankExper = 6;
+  inline bool has_rankexper() const;
+  inline void clear_rankexper();
+  static const int kRankExperFieldNumber = 6;
+  inline ::google::protobuf::uint32 rankexper() const;
+  inline void set_rankexper(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:DBRoleInfo)
  private:
   inline void set_has_uid();
   inline void clear_has_uid();
   inline void set_has_name();
   inline void clear_has_name();
+  inline void set_has_level();
+  inline void clear_has_level();
+  inline void set_has_rank();
+  inline void clear_has_rank();
+  inline void set_has_levelexper();
+  inline void clear_has_levelexper();
+  inline void set_has_rankexper();
+  inline void clear_has_rankexper();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint64 uid_;
   ::std::string* name_;
+  ::google::protobuf::uint32 level_;
+  ::google::protobuf::uint32 rank_;
+  ::google::protobuf::uint32 levelexper_;
+  ::google::protobuf::uint32 rankexper_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
 
   friend void  protobuf_AddDesc_DBmsg_2eproto();
   friend void protobuf_AssignDesc_DBmsg_2eproto();
@@ -227,6 +267,94 @@ inline void DBRoleInfo::set_allocated_name(::std::string* name) {
     clear_has_name();
     name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
+}
+
+// optional uint32 Level = 3;
+inline bool DBRoleInfo::has_level() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void DBRoleInfo::set_has_level() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void DBRoleInfo::clear_has_level() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void DBRoleInfo::clear_level() {
+  level_ = 0u;
+  clear_has_level();
+}
+inline ::google::protobuf::uint32 DBRoleInfo::level() const {
+  return level_;
+}
+inline void DBRoleInfo::set_level(::google::protobuf::uint32 value) {
+  set_has_level();
+  level_ = value;
+}
+
+// optional uint32 Rank = 4;
+inline bool DBRoleInfo::has_rank() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void DBRoleInfo::set_has_rank() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void DBRoleInfo::clear_has_rank() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void DBRoleInfo::clear_rank() {
+  rank_ = 0u;
+  clear_has_rank();
+}
+inline ::google::protobuf::uint32 DBRoleInfo::rank() const {
+  return rank_;
+}
+inline void DBRoleInfo::set_rank(::google::protobuf::uint32 value) {
+  set_has_rank();
+  rank_ = value;
+}
+
+// optional uint32 LevelExper = 5;
+inline bool DBRoleInfo::has_levelexper() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void DBRoleInfo::set_has_levelexper() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void DBRoleInfo::clear_has_levelexper() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void DBRoleInfo::clear_levelexper() {
+  levelexper_ = 0u;
+  clear_has_levelexper();
+}
+inline ::google::protobuf::uint32 DBRoleInfo::levelexper() const {
+  return levelexper_;
+}
+inline void DBRoleInfo::set_levelexper(::google::protobuf::uint32 value) {
+  set_has_levelexper();
+  levelexper_ = value;
+}
+
+// optional uint32 RankExper = 6;
+inline bool DBRoleInfo::has_rankexper() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void DBRoleInfo::set_has_rankexper() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void DBRoleInfo::clear_has_rankexper() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void DBRoleInfo::clear_rankexper() {
+  rankexper_ = 0u;
+  clear_has_rankexper();
+}
+inline ::google::protobuf::uint32 DBRoleInfo::rankexper() const {
+  return rankexper_;
+}
+inline void DBRoleInfo::set_rankexper(::google::protobuf::uint32 value) {
+  set_has_rankexper();
+  rankexper_ = value;
 }
 
 

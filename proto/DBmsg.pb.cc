@@ -32,9 +32,13 @@ void protobuf_AssignDesc_DBmsg_2eproto() {
       "DBmsg.proto");
   GOOGLE_CHECK(file != NULL);
   DBRoleInfo_descriptor_ = file->message_type(0);
-  static const int DBRoleInfo_offsets_[2] = {
+  static const int DBRoleInfo_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DBRoleInfo, uid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DBRoleInfo, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DBRoleInfo, level_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DBRoleInfo, rank_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DBRoleInfo, levelexper_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DBRoleInfo, rankexper_),
   };
   DBRoleInfo_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -77,8 +81,10 @@ void protobuf_AddDesc_DBmsg_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\013DBmsg.proto\"\'\n\nDBRoleInfo\022\013\n\003UID\030\001 \001(\004"
-    "\022\014\n\004Name\030\002 \001(\t", 54);
+    "\n\013DBmsg.proto\"k\n\nDBRoleInfo\022\013\n\003UID\030\001 \001(\004"
+    "\022\014\n\004Name\030\002 \001(\t\022\r\n\005Level\030\003 \001(\r\022\014\n\004Rank\030\004 "
+    "\001(\r\022\022\n\nLevelExper\030\005 \001(\r\022\021\n\tRankExper\030\006 \001"
+    "(\r", 122);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "DBmsg.proto", &protobuf_RegisterTypes);
   DBRoleInfo::default_instance_ = new DBRoleInfo();
@@ -98,6 +104,10 @@ struct StaticDescriptorInitializer_DBmsg_2eproto {
 #ifndef _MSC_VER
 const int DBRoleInfo::kUIDFieldNumber;
 const int DBRoleInfo::kNameFieldNumber;
+const int DBRoleInfo::kLevelFieldNumber;
+const int DBRoleInfo::kRankFieldNumber;
+const int DBRoleInfo::kLevelExperFieldNumber;
+const int DBRoleInfo::kRankExperFieldNumber;
 #endif  // !_MSC_VER
 
 DBRoleInfo::DBRoleInfo()
@@ -118,6 +128,10 @@ void DBRoleInfo::SharedCtor() {
   _cached_size_ = 0;
   uid_ = GOOGLE_ULONGLONG(0);
   name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  level_ = 0u;
+  rank_ = 0u;
+  levelexper_ = 0u;
+  rankexper_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -162,6 +176,10 @@ void DBRoleInfo::Clear() {
         name_->clear();
       }
     }
+    level_ = 0u;
+    rank_ = 0u;
+    levelexper_ = 0u;
+    rankexper_ = 0u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -201,6 +219,70 @@ bool DBRoleInfo::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(24)) goto parse_Level;
+        break;
+      }
+
+      // optional uint32 Level = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_Level:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &level_)));
+          set_has_level();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(32)) goto parse_Rank;
+        break;
+      }
+
+      // optional uint32 Rank = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_Rank:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &rank_)));
+          set_has_rank();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(40)) goto parse_LevelExper;
+        break;
+      }
+
+      // optional uint32 LevelExper = 5;
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_LevelExper:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &levelexper_)));
+          set_has_levelexper();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(48)) goto parse_RankExper;
+        break;
+      }
+
+      // optional uint32 RankExper = 6;
+      case 6: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_RankExper:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &rankexper_)));
+          set_has_rankexper();
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -237,6 +319,26 @@ void DBRoleInfo::SerializeWithCachedSizes(
       2, this->name(), output);
   }
 
+  // optional uint32 Level = 3;
+  if (has_level()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->level(), output);
+  }
+
+  // optional uint32 Rank = 4;
+  if (has_rank()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->rank(), output);
+  }
+
+  // optional uint32 LevelExper = 5;
+  if (has_levelexper()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->levelexper(), output);
+  }
+
+  // optional uint32 RankExper = 6;
+  if (has_rankexper()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->rankexper(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -258,6 +360,26 @@ void DBRoleInfo::SerializeWithCachedSizes(
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->name(), target);
+  }
+
+  // optional uint32 Level = 3;
+  if (has_level()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->level(), target);
+  }
+
+  // optional uint32 Rank = 4;
+  if (has_rank()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->rank(), target);
+  }
+
+  // optional uint32 LevelExper = 5;
+  if (has_levelexper()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->levelexper(), target);
+  }
+
+  // optional uint32 RankExper = 6;
+  if (has_rankexper()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(6, this->rankexper(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -283,6 +405,34 @@ int DBRoleInfo::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->name());
+    }
+
+    // optional uint32 Level = 3;
+    if (has_level()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->level());
+    }
+
+    // optional uint32 Rank = 4;
+    if (has_rank()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->rank());
+    }
+
+    // optional uint32 LevelExper = 5;
+    if (has_levelexper()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->levelexper());
+    }
+
+    // optional uint32 RankExper = 6;
+    if (has_rankexper()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->rankexper());
     }
 
   }
@@ -318,6 +468,18 @@ void DBRoleInfo::MergeFrom(const DBRoleInfo& from) {
     if (from.has_name()) {
       set_name(from.name());
     }
+    if (from.has_level()) {
+      set_level(from.level());
+    }
+    if (from.has_rank()) {
+      set_rank(from.rank());
+    }
+    if (from.has_levelexper()) {
+      set_levelexper(from.levelexper());
+    }
+    if (from.has_rankexper()) {
+      set_rankexper(from.rankexper());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -343,6 +505,10 @@ void DBRoleInfo::Swap(DBRoleInfo* other) {
   if (other != this) {
     std::swap(uid_, other->uid_);
     std::swap(name_, other->name_);
+    std::swap(level_, other->level_);
+    std::swap(rank_, other->rank_);
+    std::swap(levelexper_, other->levelexper_);
+    std::swap(rankexper_, other->rankexper_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

@@ -11,7 +11,7 @@ void SendServer(int userio,SSMsg * test)
 	if (!test->SerializeToArray(buff,len)) 
 	{ 
 		std::cout << "序列化数据失败" << std::endl; 
-		log.printflog("序列化数据失败！"); 
+		MYLOG.printflog("序列化数据失败！"); 
 		return;
 	}
 	//开始把该数据送往发送线程去处理发送数据
@@ -78,14 +78,14 @@ void errorsend(int userio,int error)
 	SSMsg test;
 	SSMsgHead * head = test.mutable_head();
     head->set_uid(3);                  //设置错误模块为 3 标识，该设置以后可能会修改，set_type表示访问模块的类型值
-	head->set_msgid(SS_MSGID_RegisterLogin);
+	head->set_msgid(SS_MSGID_GameMysql);
 	//test.set_error(error);                 //错误ID号为error，在客户端提示 error 应该显示那个信息
 	int len = test.ByteSize();
 	char buff[len+1];
 	if (!test.SerializeToArray(buff,len)) 
 	{ 
 		std::cout << "序列化数据失败" << std::endl; 
-	    log.printflog("序列化数据失败！"); 
+	    MYLOG.printflog("序列化数据失败！"); 
 		return;
 	}
 

@@ -10,7 +10,7 @@ CCardHandler		CHandlerList::m_oCardHandler;
 CGMHandler			CHandlerList::m_oGMHandler;
 
 */
-//RegisterLoginHandler CHandlerList::m_oRegisterLoginHandler;      //初始化登陆注册handler
+GameMysqlHandler CHandlerList::m_oGameMysqlHandler;      //初始化数据库模块handler
 
 
 CHandlerList* gm_hand = NULL;
@@ -35,7 +35,7 @@ int CHandlerList::Init()  //把Handler压到m_apCSHandler数组中。
 	RegisterHandler(CS_MSGID_GM_REQ,			&m_oGMHandler );
 	*/
 	//先屏蔽掉数据库服务器的登陆模块，等下在实现他
-	//RegisterHandler(SS_MSGID_RegisterLogin,		&m_oRegisterLoginHandler);
+	RegisterHandler(SS_MSGID_GameMysql, &m_oGameMysqlHandler);
 
 	return 0;
 }

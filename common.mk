@@ -1,5 +1,5 @@
 .PHONY:all 
-
+CFLAGS = -Wall -std=c++11
 SRCS = $(wildcard *.cpp)
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)
@@ -22,7 +22,7 @@ endif
 $(BIN):$(LINK_OBJ)
 	g++ -g -o $@ $^ -lprotobuf -pthread -L/usr/lib64/mysql -lmysqlclient 
 $(LINK_OBJ_DIR)/%.o:%.cpp
-	g++ -g -o $@ -c $(filter %.cpp,$^)
+	g++ $(CFLAGS) -g -o $@ -c $(filter %.cpp,$^)
 $(DEP_DIR)/%.d:%.cpp 
 	g++ -MM $(filter %.cpp,$^) | sed 's,\(.*\).o[ :]*,$(LINK_OBJ_DIR)/\1.o $@:,g' > $@
 #clean:

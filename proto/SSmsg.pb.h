@@ -37,6 +37,7 @@ class SSLoginReq;
 class SSLoginRsp;
 class SSRegisterReq;
 class SSRegisterRsp;
+class SSQuitReq;
 class SSRegisterLoginReqParam;
 class SSRegisterLoginRspParam;
 class SSRegisterLoginReq;
@@ -47,11 +48,13 @@ class SSMsg;
 
 enum SSRegisterLoginCmd {
   SSRegisterLoginCmd_Register = 1,
-  SSRegisterLoginCmd_Login = 2
+  SSRegisterLoginCmd_Login = 2,
+  SSRegisterLoginCmd_Quit = 3,
+  SSRegisterLoginCmd_UpdateDatabase = 4
 };
 bool SSRegisterLoginCmd_IsValid(int value);
 const SSRegisterLoginCmd SSRegisterLoginCmd_MIN = SSRegisterLoginCmd_Register;
-const SSRegisterLoginCmd SSRegisterLoginCmd_MAX = SSRegisterLoginCmd_Login;
+const SSRegisterLoginCmd SSRegisterLoginCmd_MAX = SSRegisterLoginCmd_UpdateDatabase;
 const int SSRegisterLoginCmd_ARRAYSIZE = SSRegisterLoginCmd_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* SSRegisterLoginCmd_descriptor();
@@ -65,9 +68,9 @@ inline bool SSRegisterLoginCmd_Parse(
     SSRegisterLoginCmd_descriptor(), name, value);
 }
 enum SSMsgID {
-  SS_MSGID_MIN = 0,
-  SS_MSGID_RegisterLogin = 1,
-  SS_MSGID_MAX = 2
+  SS_MSGID_MIN = 1000,
+  SS_MSGID_GameMysql = 1001,
+  SS_MSGID_MAX = 1002
 };
 bool SSMsgID_IsValid(int value);
 const SSMsgID SSMsgID_MIN = SS_MSGID_MIN;
@@ -249,17 +252,29 @@ class SSLoginRsp : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 type() const;
   inline void set_type(::google::protobuf::uint32 value);
 
+  // optional .DBRoleInfo Role = 2;
+  inline bool has_role() const;
+  inline void clear_role();
+  static const int kRoleFieldNumber = 2;
+  inline const ::DBRoleInfo& role() const;
+  inline ::DBRoleInfo* mutable_role();
+  inline ::DBRoleInfo* release_role();
+  inline void set_allocated_role(::DBRoleInfo* role);
+
   // @@protoc_insertion_point(class_scope:SSLoginRsp)
  private:
   inline void set_has_type();
   inline void clear_has_type();
+  inline void set_has_role();
+  inline void clear_has_role();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::DBRoleInfo* role_;
   ::google::protobuf::uint32 type_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
 
   friend void  protobuf_AddDesc_SSmsg_2eproto();
   friend void protobuf_AssignDesc_SSmsg_2eproto();
@@ -360,13 +375,6 @@ class SSRegisterReq : public ::google::protobuf::Message {
   inline ::std::string* release_name();
   inline void set_allocated_name(::std::string* name);
 
-  // optional uint32 sex = 4;
-  inline bool has_sex() const;
-  inline void clear_sex();
-  static const int kSexFieldNumber = 4;
-  inline ::google::protobuf::uint32 sex() const;
-  inline void set_sex(::google::protobuf::uint32 value);
-
   // @@protoc_insertion_point(class_scope:SSRegisterReq)
  private:
   inline void set_has_account();
@@ -375,18 +383,15 @@ class SSRegisterReq : public ::google::protobuf::Message {
   inline void clear_has_password();
   inline void set_has_name();
   inline void clear_has_name();
-  inline void set_has_sex();
-  inline void clear_has_sex();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* account_;
   ::std::string* password_;
   ::std::string* name_;
-  ::google::protobuf::uint32 sex_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_SSmsg_2eproto();
   friend void protobuf_AssignDesc_SSmsg_2eproto();
@@ -479,6 +484,90 @@ class SSRegisterRsp : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class SSQuitReq : public ::google::protobuf::Message {
+ public:
+  SSQuitReq();
+  virtual ~SSQuitReq();
+
+  SSQuitReq(const SSQuitReq& from);
+
+  inline SSQuitReq& operator=(const SSQuitReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SSQuitReq& default_instance();
+
+  void Swap(SSQuitReq* other);
+
+  // implements Message ----------------------------------------------
+
+  SSQuitReq* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SSQuitReq& from);
+  void MergeFrom(const SSQuitReq& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .DBRoleInfo Role = 1;
+  inline bool has_role() const;
+  inline void clear_role();
+  static const int kRoleFieldNumber = 1;
+  inline const ::DBRoleInfo& role() const;
+  inline ::DBRoleInfo* mutable_role();
+  inline ::DBRoleInfo* release_role();
+  inline void set_allocated_role(::DBRoleInfo* role);
+
+  // @@protoc_insertion_point(class_scope:SSQuitReq)
+ private:
+  inline void set_has_role();
+  inline void clear_has_role();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::DBRoleInfo* role_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_SSmsg_2eproto();
+  friend void protobuf_AssignDesc_SSmsg_2eproto();
+  friend void protobuf_ShutdownFile_SSmsg_2eproto();
+
+  void InitAsDefaultInstance();
+  static SSQuitReq* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class SSRegisterLoginReqParam : public ::google::protobuf::Message {
  public:
   SSRegisterLoginReqParam();
@@ -551,20 +640,32 @@ class SSRegisterLoginReqParam : public ::google::protobuf::Message {
   inline ::SSRegisterReq* release_registerreq();
   inline void set_allocated_registerreq(::SSRegisterReq* registerreq);
 
+  // optional .SSQuitReq QuitReq = 3;
+  inline bool has_quitreq() const;
+  inline void clear_quitreq();
+  static const int kQuitReqFieldNumber = 3;
+  inline const ::SSQuitReq& quitreq() const;
+  inline ::SSQuitReq* mutable_quitreq();
+  inline ::SSQuitReq* release_quitreq();
+  inline void set_allocated_quitreq(::SSQuitReq* quitreq);
+
   // @@protoc_insertion_point(class_scope:SSRegisterLoginReqParam)
  private:
   inline void set_has_loginreq();
   inline void clear_has_loginreq();
   inline void set_has_registerreq();
   inline void clear_has_registerreq();
+  inline void set_has_quitreq();
+  inline void clear_has_quitreq();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::SSLoginReq* loginreq_;
   ::SSRegisterReq* registerreq_;
+  ::SSQuitReq* quitreq_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_SSmsg_2eproto();
   friend void protobuf_AssignDesc_SSmsg_2eproto();
@@ -1324,6 +1425,44 @@ inline void SSLoginRsp::set_type(::google::protobuf::uint32 value) {
   type_ = value;
 }
 
+// optional .DBRoleInfo Role = 2;
+inline bool SSLoginRsp::has_role() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SSLoginRsp::set_has_role() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SSLoginRsp::clear_has_role() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SSLoginRsp::clear_role() {
+  if (role_ != NULL) role_->::DBRoleInfo::Clear();
+  clear_has_role();
+}
+inline const ::DBRoleInfo& SSLoginRsp::role() const {
+  return role_ != NULL ? *role_ : *default_instance_->role_;
+}
+inline ::DBRoleInfo* SSLoginRsp::mutable_role() {
+  set_has_role();
+  if (role_ == NULL) role_ = new ::DBRoleInfo;
+  return role_;
+}
+inline ::DBRoleInfo* SSLoginRsp::release_role() {
+  clear_has_role();
+  ::DBRoleInfo* temp = role_;
+  role_ = NULL;
+  return temp;
+}
+inline void SSLoginRsp::set_allocated_role(::DBRoleInfo* role) {
+  delete role_;
+  role_ = role;
+  if (role) {
+    set_has_role();
+  } else {
+    clear_has_role();
+  }
+}
+
 // -------------------------------------------------------------------
 
 // SSRegisterReq
@@ -1538,28 +1677,6 @@ inline void SSRegisterReq::set_allocated_name(::std::string* name) {
   }
 }
 
-// optional uint32 sex = 4;
-inline bool SSRegisterReq::has_sex() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void SSRegisterReq::set_has_sex() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void SSRegisterReq::clear_has_sex() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void SSRegisterReq::clear_sex() {
-  sex_ = 0u;
-  clear_has_sex();
-}
-inline ::google::protobuf::uint32 SSRegisterReq::sex() const {
-  return sex_;
-}
-inline void SSRegisterReq::set_sex(::google::protobuf::uint32 value) {
-  set_has_sex();
-  sex_ = value;
-}
-
 // -------------------------------------------------------------------
 
 // SSRegisterRsp
@@ -1584,6 +1701,48 @@ inline ::google::protobuf::uint32 SSRegisterRsp::type() const {
 inline void SSRegisterRsp::set_type(::google::protobuf::uint32 value) {
   set_has_type();
   type_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SSQuitReq
+
+// optional .DBRoleInfo Role = 1;
+inline bool SSQuitReq::has_role() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SSQuitReq::set_has_role() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SSQuitReq::clear_has_role() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SSQuitReq::clear_role() {
+  if (role_ != NULL) role_->::DBRoleInfo::Clear();
+  clear_has_role();
+}
+inline const ::DBRoleInfo& SSQuitReq::role() const {
+  return role_ != NULL ? *role_ : *default_instance_->role_;
+}
+inline ::DBRoleInfo* SSQuitReq::mutable_role() {
+  set_has_role();
+  if (role_ == NULL) role_ = new ::DBRoleInfo;
+  return role_;
+}
+inline ::DBRoleInfo* SSQuitReq::release_role() {
+  clear_has_role();
+  ::DBRoleInfo* temp = role_;
+  role_ = NULL;
+  return temp;
+}
+inline void SSQuitReq::set_allocated_role(::DBRoleInfo* role) {
+  delete role_;
+  role_ = role;
+  if (role) {
+    set_has_role();
+  } else {
+    clear_has_role();
+  }
 }
 
 // -------------------------------------------------------------------
@@ -1663,6 +1822,44 @@ inline void SSRegisterLoginReqParam::set_allocated_registerreq(::SSRegisterReq* 
     set_has_registerreq();
   } else {
     clear_has_registerreq();
+  }
+}
+
+// optional .SSQuitReq QuitReq = 3;
+inline bool SSRegisterLoginReqParam::has_quitreq() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void SSRegisterLoginReqParam::set_has_quitreq() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void SSRegisterLoginReqParam::clear_has_quitreq() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void SSRegisterLoginReqParam::clear_quitreq() {
+  if (quitreq_ != NULL) quitreq_->::SSQuitReq::Clear();
+  clear_has_quitreq();
+}
+inline const ::SSQuitReq& SSRegisterLoginReqParam::quitreq() const {
+  return quitreq_ != NULL ? *quitreq_ : *default_instance_->quitreq_;
+}
+inline ::SSQuitReq* SSRegisterLoginReqParam::mutable_quitreq() {
+  set_has_quitreq();
+  if (quitreq_ == NULL) quitreq_ = new ::SSQuitReq;
+  return quitreq_;
+}
+inline ::SSQuitReq* SSRegisterLoginReqParam::release_quitreq() {
+  clear_has_quitreq();
+  ::SSQuitReq* temp = quitreq_;
+  quitreq_ = NULL;
+  return temp;
+}
+inline void SSRegisterLoginReqParam::set_allocated_quitreq(::SSQuitReq* quitreq) {
+  delete quitreq_;
+  quitreq_ = quitreq;
+  if (quitreq) {
+    set_has_quitreq();
+  } else {
+    clear_has_quitreq();
   }
 }
 
@@ -2015,7 +2212,7 @@ inline void SSMsgHead::clear_has_msgid() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void SSMsgHead::clear_msgid() {
-  msgid_ = 0;
+  msgid_ = 1000;
   clear_has_msgid();
 }
 inline ::SSMsgID SSMsgHead::msgid() const {

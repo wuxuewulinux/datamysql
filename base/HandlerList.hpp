@@ -2,6 +2,7 @@
 #define __HANLERLIST_HPP__
 
 #include "Handler.hpp"
+#include "GameMysqlHandler.hpp"
 
 #define HANDLERLIST CHandlerList::Instance()
 
@@ -33,7 +34,7 @@ private:
 	*/
 
 	//先屏蔽掉数据库服务的登陆注册模块，等下在实现他
-	//static RegisterLoginHandler m_oRegisterLoginHandler;    //登陆注册模块handler
+	static GameMysqlHandler m_oGameMysqlHandler;    //数据库模块handler
 };
 
 
