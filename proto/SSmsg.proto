@@ -36,6 +36,8 @@ message SSRegisterReq								//注册
 message SSRegisterRsp								//注册 		
 {
 	optional uint32 type = 1;					//返回：1表示账号已存在，2表示名称已存在，3表示注册成功
+	optional uint64 uid = 2;
+	optional string name = 3;
 }
 
 message SSQuitReq								//退出功能 和 数据库更新功能   共享该数据结构

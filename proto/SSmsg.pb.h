@@ -463,17 +463,42 @@ class SSRegisterRsp : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 type() const;
   inline void set_type(::google::protobuf::uint32 value);
 
+  // optional uint64 uid = 2;
+  inline bool has_uid() const;
+  inline void clear_uid();
+  static const int kUidFieldNumber = 2;
+  inline ::google::protobuf::uint64 uid() const;
+  inline void set_uid(::google::protobuf::uint64 value);
+
+  // optional string name = 3;
+  inline bool has_name() const;
+  inline void clear_name();
+  static const int kNameFieldNumber = 3;
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
+  inline ::std::string* release_name();
+  inline void set_allocated_name(::std::string* name);
+
   // @@protoc_insertion_point(class_scope:SSRegisterRsp)
  private:
   inline void set_has_type();
   inline void clear_has_type();
+  inline void set_has_uid();
+  inline void clear_has_uid();
+  inline void set_has_name();
+  inline void clear_has_name();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::google::protobuf::uint64 uid_;
+  ::std::string* name_;
   ::google::protobuf::uint32 type_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_SSmsg_2eproto();
   friend void protobuf_AssignDesc_SSmsg_2eproto();
@@ -1701,6 +1726,98 @@ inline ::google::protobuf::uint32 SSRegisterRsp::type() const {
 inline void SSRegisterRsp::set_type(::google::protobuf::uint32 value) {
   set_has_type();
   type_ = value;
+}
+
+// optional uint64 uid = 2;
+inline bool SSRegisterRsp::has_uid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SSRegisterRsp::set_has_uid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SSRegisterRsp::clear_has_uid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SSRegisterRsp::clear_uid() {
+  uid_ = GOOGLE_ULONGLONG(0);
+  clear_has_uid();
+}
+inline ::google::protobuf::uint64 SSRegisterRsp::uid() const {
+  return uid_;
+}
+inline void SSRegisterRsp::set_uid(::google::protobuf::uint64 value) {
+  set_has_uid();
+  uid_ = value;
+}
+
+// optional string name = 3;
+inline bool SSRegisterRsp::has_name() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void SSRegisterRsp::set_has_name() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void SSRegisterRsp::clear_has_name() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void SSRegisterRsp::clear_name() {
+  if (name_ != &::google::protobuf::internal::kEmptyString) {
+    name_->clear();
+  }
+  clear_has_name();
+}
+inline const ::std::string& SSRegisterRsp::name() const {
+  return *name_;
+}
+inline void SSRegisterRsp::set_name(const ::std::string& value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void SSRegisterRsp::set_name(const char* value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void SSRegisterRsp::set_name(const char* value, size_t size) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* SSRegisterRsp::mutable_name() {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  return name_;
+}
+inline ::std::string* SSRegisterRsp::release_name() {
+  clear_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = name_;
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void SSRegisterRsp::set_allocated_name(::std::string* name) {
+  if (name_ != &::google::protobuf::internal::kEmptyString) {
+    delete name_;
+  }
+  if (name) {
+    set_has_name();
+    name_ = name;
+  } else {
+    clear_has_name();
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
 }
 
 // -------------------------------------------------------------------
